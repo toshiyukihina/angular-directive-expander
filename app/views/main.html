@@ -1,3 +1,5 @@
-<expander class='expander' expander-title='title'>
-  {{text}}
-</expander>
+<accordion>
+  <expander class='expander' ng-repeat="expander in expanders" expander-title='expander.title'>
+    {{expander.text}}
+  </expander>
+</acccordion>
