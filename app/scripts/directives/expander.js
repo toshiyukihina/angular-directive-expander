@@ -8,14 +8,18 @@ angular.module('angularDirectiveExpanderApp')
       transclude: true,
       scope: { title: '=expanderTitle' },
       template: '<div>' + 
-        '<div class="title" ng-click="toggle()">{{title}}</div>' +
-        '<div class="body" ng-show="showMe" ng-transclude></div>' + 
+        '<div class="title">{{title}}</div>' +
+        '<div class="body closed" ng-transclude></div>' + 
         '</div>',
       link: function postLink(scope, element, attrs) {
-        scope.showMe = false;
-        scope.toggle = function() {
-          scope.showMe = !scope.showMe;
-        };
+        var titleElement = angular.element(element.children().eq(0));
+        var bodyElement = angular.element(element.children().eq(1));
+
+        titleElement.bind('click', toggle);
+
+        function toggle() {
+          bodyElement.toggleClass('closed');
+        }
       }
     };
   });

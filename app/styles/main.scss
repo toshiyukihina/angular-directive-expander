@@ -84,6 +84,9 @@ body {
 .expander > .body {
     padding: .1em .3em;
 }
+.closed {
+    display: none;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
